@@ -1,0 +1,86 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">News Scraper</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="/">
+          <span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+      </li>
+      <li class="active">
+        <a href="/mySavedArticles">
+          <span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Saved Articles</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+
+</div>
+<div class="container">
+  <div class="row">
+
+    <ul>
+      {{#each savedArticleList}}
+      <div class="col-xs-12 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="{{link}}" target="_blank">{{headline}}</a>
+          </div>
+          <div class="panel-body">
+            <p>{{summary}}</p>
+            <button type="button" class="btn btn-success" id="delArticle" data-id="{{_id}}">REMOVE SAVED</button>
+            <button type="button" class="btn btn-success" id="notesArticle" data-toggle="modal" data-target="#notesModal" data-id="{{_id}}">ARTICLE NOTES</button>
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <div class="well emptyMessage col-xs-12">There is no Saved Articles !</div>
+      {{/each}}
+    </ul>
+
+  </div>
+</div>
+<!-- Notes Modal -->
+<div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="notes-form">
+          <div class="form-group">
+            <textarea class="form-control" id="notesinput" placeholder="New Note"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary saveNoteBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- alert Modal -->
+<div class="modal fade" id="alertModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Information</h4>
+      </div>
+      <div class="modal-body">
+        <p id="alertMessage">Article removed successfully!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>

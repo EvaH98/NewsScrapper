@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">News Scraper</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
+      <li><a href="/mySavedArticles"><span class="glyphicon glyphicon-floppy-saved"></span>&nbsp;Saved Articles</a></li>
+      <li><a href="/" onclick="scrape(this); return false;"><span class="glyphicon glyphicon-save"></span>&nbsp;New Articles</a></li>     
+    </ul>
+  </div>  
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  
+</div>
+<div class="container">
+    <div class="row">
+       
+                {{#each dbArticle}}
+                 <div class="col-xs-12 col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="{{link}}" target="_blank">{{headline}}</a>                        
+                    </div>
+                    <div class="panel-body">
+                        <p>{{summary}}</p>
+                        <button type="button" class="btn btn-success" id="saveArticle" data-id="{{_id}}">SAVE ARTICLE</button>
+                    </div>
+                    
+                </div>
+                </div>
+                {{else}}
+                  <div class="well emptyMessage col-xs-12">Click on 'New Articles' to get started !</div>
+                {{/each}} 
+            </ul>            
+        
+    </div>    
+</div>
